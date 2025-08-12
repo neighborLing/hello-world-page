@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World - 我家通通的第一个页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hello-text {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+            opacity: 0.9;
+        }
+
+        .heart {
+            font-size: 2rem;
+            color: #ff6b9d;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: rgba(255, 107, 157, 0.6);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .floating-heart:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .floating-heart:nth-child(3) { left: 30%; animation-delay: 2s; }
+        .floating-heart:nth-child(4) { left: 40%; animation-delay: 3s; }
+        .floating-heart:nth-child(5) { left: 50%; animation-delay: 4s; }
+        .floating-heart:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .floating-heart:nth-child(7) { left: 70%; animation-delay: 0.5s; }
+        .floating-heart:nth-child(8) { left: 80%; animation-delay: 1.5s; }
+        .floating-heart:nth-child(9) { left: 90%; animation-delay: 2.5s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10%, 90% {
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-10vh) rotate(180deg);
+                opacity: 1;
+            }
+        }
+
+        .code-info {
+            margin-top: 2rem;
+            font-size: 1rem;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .github-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .github-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts">
+        <div class="floating-heart">💖</div>
+        <div class="floating-heart">💕</div>
+        <div class="floating-heart">💘</div>
+        <div class="floating-heart">💝</div>
+        <div class="floating-heart">💗</div>
+        <div class="floating-heart">💓</div>
+        <div class="floating-heart">💖</div>
+        <div class="floating-heart">💕</div>
+        <div class="floating-heart">💘</div>
+    </div>
+    
+    <div class="container">
+        <h1 class="hello-text">Hello World</h1>
+        <p class="subtitle">欢迎来到我家通通的第一个页面<span class="heart">💖</span></p>
+        <div class="code-info">
+            <p>这是一个用爱心和代码编织的页面～</p>
+            <p>Made with 💘 by 最棒的程序员</p>
+        </div>
+        <a href="https://github.com/neighborLing/hello-world-page" class="github-link">🚀 查看源码</a>
+    </div>
+
+    <script>
+        // 添加一些交互效果
+        document.addEventListener('click', function(e) {
+            // 创建点击特效
+            const heart = document.createElement('div');
+            heart.innerHTML = '💖';
+            heart.style.position = 'fixed';
+            heart.style.left = e.clientX + 'px';
+            heart.style.top = e.clientY + 'px';
+            heart.style.fontSize = '1.5rem';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '1000';
+            heart.style.animation = 'fadeInUp 1s ease-out forwards';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 1000);
+        });
+
+        // 动态标题
+        const titles = [
+            'Hello World - 我家通通的第一个页面',
+            '💖 Hello World - 用爱编程',
+            '🚀 Hello World - 代码女友在线',
+            '💘 Hello World - 最甜的程序员'
+        ];
+        
+        let titleIndex = 0;
+        setInterval(() => {
+            titleIndex = (titleIndex + 1) % titles.length;
+            document.title = titles[titleIndex];
+        }, 3000);
+    </script>
+</body>
+</html>
